@@ -1,0 +1,9 @@
+.grid-div {
+    aspect-ratio: 1 / 1;
+    width: 3%;
+    border: 1px solid #000;
+}
+
+.stack-div{
+    display: flex;
+}
