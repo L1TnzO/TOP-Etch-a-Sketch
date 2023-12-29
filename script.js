@@ -1,4 +1,6 @@
-const gridContainer = document.querySelector('.grid-container');
+const gridContainer = document.querySelector('.grid');
+
+const slider = document.querySelector('#slider')
 
 //create elements
 const gridDiv = document.createElement('div');
@@ -20,27 +22,37 @@ const addGrid = (n) => {
     }
 }
 
-addGrid(16);
+const clearGrid = () => {
+  while(gridContainer.firstChild){
+    gridContainer.removeChild(gridContainer.firstChild);
+  } 
+}
+
+addGrid(10);
 
 let isMouseDown = false;
 
-document.addEventListener('mousedown', function(e) {
+document.addEventListener('mousedown', ()=> {
   isMouseDown = true;
 });
 
-document.addEventListener('mouseup', function() {
+document.addEventListener('mouseup', ()=> {
     isMouseDown = false;
   });
 
 
-document.addEventListener('mousemove', function(e) {
+document.addEventListener('mousemove', (e)=> {
     if (isMouseDown) {
       let target = e.target;
       console.log(target.tagName)
       if (target.classList.contains('grid-div')) {
-        target.style.backgroundColor = 'red';
+        target.style.backgroundColor = document.getElementById("colorPicker").value;
       }
     }
   });
-  
+
+slider.addEventListener('input', (e)=>{
+  clearGrid();
+  addGrid(e.target.value)
+} )
 

@@ -5,8 +5,20 @@
   <title>Etch-a-Sketch</title>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="grid-container"></div>
+  <div class="sketch-container">
+
+    <section id="toolSettings">
+      <label for="colorPicker">Choose a color:</label>
+      <input type="color" id="colorPicker">
+      <label for="slider">Select a value:</label>
+    <input type="range" id="slider" name="slider" min="0" max="128" value="50">
+    </section>
+
+    <section class="grid-container">
+      <div class="grid">
+      </div>
+    </section>
+    
   </div>
   <script src="script.js"></script>
 </body>
