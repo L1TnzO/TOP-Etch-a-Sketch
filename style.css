@@ -1,9 +1,45 @@
 .grid-div {
     aspect-ratio: 1 / 1;
-    width: 3%;
-    border: 1px solid #000;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
-
 .stack-div{
     display: flex;
 }
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 4;
+}
+  
+.grid {
+    border: 1px solid #000;
+    height: 50vh;
+    aspect-ratio: 1 / 1;
+}
+  
+body{
+    margin: 0;
+}
+
+.sketch-container{
+    display: flex;
+    margin: auto;
+    height: 100vh;
+}
+
+#toolSettings{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#toolSettings > * {
+    margin-bottom: 10px;
+}
+
