@@ -43,3 +43,23 @@ body{
     margin-bottom: 10px;
 }
 
+#clear,#rainbow{
+    max-width: fit-content;
+    padding: 5px 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+}
+
+#rainbow.pressed{
+    background-color: gray;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+#sliderValue{
+    margin: 0;
+}
