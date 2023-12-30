@@ -2,6 +2,12 @@ const gridContainer = document.querySelector('.grid');
 
 const slider = document.querySelector('#slider')
 
+const sliderValue = document.querySelector('#sliderValue')
+
+const clearBtn = document.querySelector('#clear')
+
+const rainbowBtn = document.querySelector('#rainbow')
+
 //create elements
 const gridDiv = document.createElement('div');
 gridDiv.classList.add('grid-div');
@@ -31,7 +37,7 @@ const clearGrid = () => {
 addGrid(10);
 
 let isMouseDown = false;
-
+let rainbowMode = false;
 document.addEventListener('mousedown', ()=> {
   isMouseDown = true;
 });
@@ -41,18 +47,45 @@ document.addEventListener('mouseup', ()=> {
   });
 
 
-document.addEventListener('mousemove', (e)=> {
+  document.addEventListener('mousemove', (e) => {
     if (isMouseDown) {
       let target = e.target;
-      console.log(target.tagName)
       if (target.classList.contains('grid-div')) {
-        target.style.backgroundColor = document.getElementById("colorPicker").value;
+        if (rainbowMode) {
+          target.style.backgroundColor = (() => {
+            const R = Math.floor(Math.random() * 256);
+            const G = Math.floor(Math.random() * 256);
+            const B = Math.floor(Math.random() * 256);
+            return `rgb(${R}, ${G}, ${B})`;
+          })();
+        } else {
+          target.style.backgroundColor = document.getElementById("colorPicker").value;
+        }
       }
     }
   });
+  
+  
 
 slider.addEventListener('input', (e)=>{
   clearGrid();
   addGrid(e.target.value)
+  sliderValue.textContent = e.target.value
 } )
 
+clearBtn.addEventListener('click', ()=> {
+  let grid = document.querySelectorAll(".grid-div"); 
+  grid.forEach((div) => {
+    div.style.backgroundColor = 'white';
+  })
+})
+
+rainbowBtn.addEventListener('click', ()=> {
+  if (rainbowMode){
+    rainbowMode = false;
+    rainbowBtn.classList.remove("pressed");
+  } else{
+    rainbowMode = true;
+    rainbowBtn.classList.toggle("pressed");
+  }
+})
