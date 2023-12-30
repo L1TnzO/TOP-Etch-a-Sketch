@@ -47,25 +47,24 @@ document.addEventListener('mouseup', ()=> {
   });
 
 
-  document.addEventListener('mousemove', (e) => {
-    if (isMouseDown) {
-      let target = e.target;
-      if (target.classList.contains('grid-div')) {
-        if (rainbowMode) {
-          target.style.backgroundColor = (() => {
-            const R = Math.floor(Math.random() * 256);
-            const G = Math.floor(Math.random() * 256);
-            const B = Math.floor(Math.random() * 256);
-            return `rgb(${R}, ${G}, ${B})`;
-          })();
-        } else {
-          target.style.backgroundColor = document.getElementById("colorPicker").value;
-        }
+gridContainer.addEventListener('mousemove', (e) => {
+  const rainbowFunct = () => {
+    const R = Math.floor(Math.random() * 256);
+    const G = Math.floor(Math.random() * 256);
+    const B = Math.floor(Math.random() * 256);
+    return `rgb(${R}, ${G}, ${B})`;
+  };
+  if (isMouseDown) {
+    let target = e.target;
+    if (target.classList.contains('grid-div')) {
+      if (rainbowMode) {
+        target.style.backgroundColor = rainbowFunct();
+      } else {
+        target.style.backgroundColor = document.getElementById("colorPicker").value;
       }
     }
-  });
-  
-  
+  }
+});
 
 slider.addEventListener('input', (e)=>{
   clearGrid();
@@ -94,3 +93,4 @@ rainbowBtn.addEventListener('click', ()=> {
 gridContainer.addEventListener('dragstart', (e) => {
   e.preventDefault();
 });
+
