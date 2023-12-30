@@ -89,3 +89,8 @@ rainbowBtn.addEventListener('click', ()=> {
     rainbowBtn.classList.toggle("pressed");
   }
 })
+
+//prevents div crawling by holding down
+gridContainer.addEventListener('dragstart', (e) => {
+  e.preventDefault();
+});
